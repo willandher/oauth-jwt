@@ -24,7 +24,7 @@ public class CustomUserDetailsService implements UserDetailsService {
     public UserDetails loadUserByUsername(String email) {
         User user = userRepository.findByEmail(email)
                 .orElseThrow(() ->
-                        new NotFoundException("Correo ya registrado [email: " + email + "]")
+                        new NotFoundException("Correo no registrado [email: " + email + "]")
                 );
 
         return UserPrincipal.create(user);

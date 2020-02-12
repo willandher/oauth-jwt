@@ -24,6 +24,7 @@ public class UserPrincipal implements UserDetails {
 
     private String token;
 
+    @JsonIgnore
     private String email;
 
     @JsonIgnore
@@ -31,7 +32,10 @@ public class UserPrincipal implements UserDetails {
 
     private Collection<? extends GrantedAuthority> authorities;
 
-    public UserPrincipal(Long id, String name, String email, String password,boolean isactivo, Date created,Date update, Date lastLogin, String token) {
+    public UserPrincipal() {
+    }
+
+    public UserPrincipal(Long id, String name, String email, String password, boolean isactivo, Date created, Date update, Date lastLogin, String token) {
         this.id = id;
         this.name = name;
         this.email = email;
