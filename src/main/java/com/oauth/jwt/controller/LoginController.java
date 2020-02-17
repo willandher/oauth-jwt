@@ -2,6 +2,7 @@ package com.oauth.jwt.controller;
 
 import com.oauth.jwt.dto.LoginRequest;
 import com.oauth.jwt.dto.UserDto;
+import com.oauth.jwt.security.UserPrincipal;
 import com.oauth.jwt.service.LoginService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -23,13 +24,13 @@ public class LoginController {
 
     @PostMapping("/login")
     @ResponseStatus(OK)
-    public UserDto login(@Valid @RequestBody LoginRequest loginRequest) {
+    public UserPrincipal login(@Valid @RequestBody LoginRequest loginRequest) {
         return loginService.authenticateUser(loginRequest);
     }
 
     @PostMapping("/register-user")
     @ResponseStatus(OK)
-    public UserDto register(@Valid @RequestBody UserDto userDto) {
+    public UserPrincipal register(@Valid @RequestBody UserDto userDto) {
         return loginService.registerUser(userDto);
     }
 }

@@ -80,7 +80,7 @@ public class LoginTest {
                 .contentType(MediaType.APPLICATION_JSON)
                 .content(body)
         )
-                .andExpect(MockMvcResultMatchers.status().isNotFound())
+                .andExpect(MockMvcResultMatchers.status().isBadRequest())
                 //.andExpect(redirectedUrl("/user/home"))
                 .andReturn()
                 .getRequest();
@@ -100,7 +100,7 @@ public class LoginTest {
                 .contentType(MediaType.APPLICATION_JSON)
                 .content(body)
         )
-                .andExpect(MockMvcResultMatchers.status().isBadRequest());
+                .andExpect(MockMvcResultMatchers.status().isInternalServerError());
 
     }
 
@@ -117,7 +117,7 @@ public class LoginTest {
                 .contentType(MediaType.APPLICATION_JSON)
                 .content(body)
         )
-                .andExpect(MockMvcResultMatchers.status().isBadRequest());
+                .andExpect(MockMvcResultMatchers.status().isInternalServerError());
 
     }
 

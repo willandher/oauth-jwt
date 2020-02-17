@@ -1,6 +1,6 @@
-# spring-security-jwt
+# login-jwt
 
-## Technology stack
+## se ha usado
 - Java 8
 - Spring Boot
 - Spring Data
@@ -13,11 +13,9 @@
 - [Login](#Login)
     - [Success](#login-success)
     - [Email not found](#login email not found)
-    - [Unauthorized](#login-unauthorized)
 - [Register User](#register user)
-    - [Success](#success)
-    - [Email already exists](#register-user-email-already-exists)
-    - [Bad request](#register-user-bad-request)
+    - [Register User inautorizdo](#Register User inautorizdo)
+    - [Register User](#register-user)
 
 
 ##Login
@@ -70,7 +68,7 @@ Status: 404
 }
 
 ```
-##Register User unauthorized
+##Register User Inautorizado
 ```
 POST: http://localhost:5000/api/auth/register-user
 ```
@@ -94,9 +92,13 @@ Body
 }
 ```
 Body 
-Status 401
+```
+{
+    "mensaje": "No esta autorizado."
+}
+```
 
-##REgistro de usario
+##Registro de usario
 Loguearse
 ```
 POST: http://localhost:5000/api/auth/login
@@ -109,9 +111,9 @@ Content-Type: application/json
 Body 
 ``` 
 {
-         	"email": "willandherg@gmail.com",
-         	"password": "Will22"
-         }
+    "email": "willandherg@gmail.com",
+    "password": "Will22"
+}
 ```
 ```
 {
@@ -146,5 +148,15 @@ Body
 	"countrycode": "57"
 	}
 	]
+}
+```
+Body
+```
+{
+    "id": 2,
+    "name": "Juan Rodriguez",
+    "isactivo": true,
+    "update": "2020-02-17T11:29:11.268+0000",
+    "created": "2020-02-17T11:29:11.268+0000",
 }
 ```

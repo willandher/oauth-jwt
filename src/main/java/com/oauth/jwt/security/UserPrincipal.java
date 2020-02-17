@@ -1,6 +1,7 @@
 package com.oauth.jwt.security;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.oauth.jwt.model.User;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -18,10 +19,12 @@ public class UserPrincipal implements UserDetails {
 
     private Date update;
 
+    @JsonInclude(JsonInclude.Include.NON_NULL)
     private Date lastLogin;
 
     private Date created;
 
+    @JsonInclude(JsonInclude.Include.NON_NULL)
     private String token;
 
     @JsonIgnore
@@ -58,7 +61,7 @@ public class UserPrincipal implements UserDetails {
                 user.getActivo(),
                 user.getCreated(),
                 user.getUpdate(),
-                user.getLastLogin()==null?user.getCreated():user.getLastLogin(),
+                user.getLastLogin(),
                 user.getJwt()
 
         );
