@@ -1,5 +1,6 @@
 package com.oauth.jwt.config;
 
+import com.oauth.jwt.error.CustomAccessDeniedHandler;
 import com.oauth.jwt.security.CustomUserDetailsService;
 import com.oauth.jwt.security.JwtAuthenticationEntryPoint;
 import com.oauth.jwt.security.JwtAuthenticationFilter;
@@ -33,19 +34,16 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
             "/h2/**"
     };
 
+
+    private CustomAccessDeniedHandler accessDeniedHandler;
     private CustomUserDetailsService customUserDetailsService;
     private JwtAuthenticationEntryPoint unauthorizedHandler;
 
     @Autowired
-    public SecurityConfig(CustomUserDetailsService customUserDetailsService, JwtAuthenticationEntryPoint unauthorizedHandler) {
+    public SecurityConfig(CustomUserDetailsService customUserDetailsService, JwtAuthenticationEntryPoint unauthorizedHandler,CustomAccessDeniedHandler accessDeniedHandler) {
         this.customUserDetailsService = customUserDetailsService;
         this.unauthorizedHandler = unauthorizedHandler;
-    }
-
-    public SecurityConfig(boolean disableDefaults, CustomUserDetailsService customUserDetailsService, JwtAuthenticationEntryPoint unauthorizedHandler) {
-        super(disableDefaults);
-        this.customUserDetailsService = customUserDetailsService;
-        this.unauthorizedHandler = unauthorizedHandler;
+        this.accessDeniedHandler = accessDeniedHandler;
     }
 
     @Bean
@@ -82,7 +80,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .frameOptions()
                 .disable()
                 .and()
-                .exceptionHandling()
+                .exceptionHandling().accessDeniedHandler(accessDeniedHandler)
                 .authenticationEntryPoint(unauthorizedHandler)
                 .and()
                 .sessionManagement()
