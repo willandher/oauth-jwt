@@ -7,23 +7,22 @@
 - Spring Security
 - H2
 - Maven
-- Log4j
 
 ## API Documentation
 
-- [Signup](#signup)
-    - [Success](#signup-success)
+- [Register User](#register user)
+    - [Success](#success)
     - [Email already exists](#signup-email-already-exists)
     - [Bad request](#signup-bad-request)
-- [Signin](#signin)
-    - [Success](#signin-success)
-    - [Email not found](#signin-email-not-found)
+- [Login](#Login)
+    - [Success](#login-success)
+    - [Email not found](#login email not found)
     - [Unauthorized](#signin-unauthorized)
 - [Current user](#current-user)
     - [Success](#current-user-success)
     - [Unauthorized](#current-user---unauthorized)
 
-## Login
+##Login
 
 ```
 POST: http://localhost:5000/api/auth/login
@@ -43,7 +42,7 @@ Body
 ```
 
 
-## Login success 
+##Login-success 
 Status: 200
 Body
 ```
@@ -69,7 +68,6 @@ Body
 Status: 404
 ```
 {
-  "code": 404,
   "message": "User no encontrado [email: willandhergg@gmail.com]"
 }
 
@@ -99,20 +97,7 @@ Body
 ```
 Body 
 Status 401
-```
-{
-	"name": "Juan Rodriguez",
-	"email": "juanrodrigez@gmail.com",
-	"password": "Will22",
-	"phones": [
-	{
-	"number": "1234567",
-	"citycode": "1",
-	"countrycode": "57"
-	}
-	]
-}
-```
+
 ##REgistro de usario
 Loguearse
 ```
@@ -151,7 +136,17 @@ Content-Type: application/json
 Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIxIiwiaWF0IjoxNTgxNDQzMzM3LCJleHAiOjE1ODIwNDgxMzd9.FvSgLAVcmZAeId7rakBs0lFhD3w3IO-YADd522zT2oPFjsKctreBDSrMGAyYIJH9tP6LNz8Ss8LRbQMEsOA5Dw
 ```
 Body 
-Status 200
 ```
-
+{
+	"name": "Juan Rodriguez",
+	"email": "juanrodrigez@gmail.com",
+	"password": "Will22",
+	"phones": [
+	{
+	"number": "1234567",
+	"citycode": "1",
+	"countrycode": "57"
+	}
+	]
+}
 ```
