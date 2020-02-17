@@ -10,17 +10,15 @@
 
 ## API Documentation
 
-- [Register User](#register user)
-    - [Success](#success)
-    - [Email already exists](#signup-email-already-exists)
-    - [Bad request](#signup-bad-request)
 - [Login](#Login)
     - [Success](#login-success)
     - [Email not found](#login email not found)
-    - [Unauthorized](#signin-unauthorized)
-- [Current user](#current-user)
-    - [Success](#current-user-success)
-    - [Unauthorized](#current-user---unauthorized)
+    - [Unauthorized](#login-unauthorized)
+- [Register User](#register user)
+    - [Success](#success)
+    - [Email already exists](#register-user-email-already-exists)
+    - [Bad request](#register-user-bad-request)
+
 
 ##Login
 
